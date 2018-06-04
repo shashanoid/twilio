@@ -1,19 +1,21 @@
 commands:
   sms:
-    help: Send a SMS message
-    args:
-      - name: to
+    help: Send an SMS message
+    arguments:
+      to:
         type: string
         required: true
         pattern: /^+\d+$/
-      - name: from
+      from:
         type: string
         required: true
         pattern: /^+\d+$/
-      - name: body
+      body:
         type: string
         required: true
 
-env:
+environment:
   ACCOUNT:
+    type: string
   TOKEN:
+    type: string
