@@ -1,0 +1,52 @@
+omg: 1
+lifecycle:
+  startup:
+    command: ["python", "/app/app.py"]
+actions:
+  sms:
+    http:
+      path: /sms
+      method: post
+      port: 8000
+    arguments:
+      to:
+        type: string
+        required: true
+        in: requestBody
+      from:
+        type: string
+        required: true
+        in: requestBody
+      body:
+        type: string
+        required: true
+        in: requestBody
+    output:
+      type: object
+      contentType: application/json
+      properties:
+        error_code:
+          type: any
+        error_message:
+          type: string
+        status:
+          type: string
+        price:
+          type: float
+        price_unit:
+          type: float
+        sid:
+          type: string
+        uri:
+          type: string
+        messaging_service_sid:
+          type: string
+environment:
+  ACCOUNT_SID:
+    help: |
+      Create a Twilio account at https://twilio.com
+    type: string
+  AUTH_TOKEN:
+    help: |
+      Create a Twilio account at https://twilio.com
+    type: string
